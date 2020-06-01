@@ -19,36 +19,29 @@ export class DataStorageService {
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
     this.http
-      .put('https://ng-recipe-book-4a5e0.firebaseio.com/recipes.json', recipes)
+      .put("https://ng-recipe-book-4a5e0.firebaseio.com/recipes.json", recipes)
       .subscribe((response) => {
         console.log(response);
       });
   }
 
   fetchRecipes() {
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(
-          'https://ng-recipe-book-4a5e0.firebaseio.com/recipes.json',
-          {
-            params: new HttpParams().set('auth', user.token)
-          }
-        );
-      }),
-      map((recipes) => {
-        // map is an rxjs operator
-        return recipes.map((recipe) => {
-          // map is just a function called on the recipes array
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : []
-          };
-        });
-      }),
-      tap((recipes) => {
-        this.recipeService.setRecipes(recipes);
-      })
-    );
+    return this.http
+      .get<Recipe[]>("https://ng-recipe-book-4a5e0.firebaseio.com/recipes.json")
+      .pipe(
+        map((recipes) => {
+          // map is an rxjs operator
+          return recipes.map((recipe) => {
+            // map is just a function called on the recipes array
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap((recipes) => {
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
