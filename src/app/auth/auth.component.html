@@ -1,10 +1,10 @@
 <ng-template appPlaceholder></ng-template> <!-- To use programmatic dynamic components comment app-allert and uncomment alert.component.html -->
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <!-- <div class="alert alert-danger" style="background-color: rgb(223, 182, 182);" *ngIf="error">
+     <div class="alert alert-danger" style="background-color: rgb(223, 182, 182);" *ngIf="error">
       <p>{{ error }}</p>
-    </div> -->
-    <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert> <!-- Dynamic components with *ngIf (use this)-->
+    </div>
+    <!-- <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert> Dynamic components with *ngIf (use this in other app)-->
     <div *ngIf="isLoading" style="text-align: center;">
       <app-loading-spinner></app-loading-spinner>
     </div>
