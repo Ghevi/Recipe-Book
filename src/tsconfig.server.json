@@ -8,7 +8,9 @@
     ]
   },
   "files": [
-    "src/main.server.ts",
+    "main.server.ts",
+    "../server.ts",
+    "server.ts",
     "server.ts"
   ],
   "angularCompilerOptions": {

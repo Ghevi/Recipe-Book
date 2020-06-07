@@ -99,7 +99,14 @@
           "options": {
             "outputPath": "dist/my-first-app/server",
             "main": "server.ts",
-            "tsConfig": "src/tsconfig.server.json"
+            "tsConfig": "src/tsconfig.server.json",
+            "externalDependencies": [
+              "@nestjs/microservices",
+              "@nestjs/microservices/microservices-module",
+              "@nestjs/websockets",
+              "@nestjs/websockets/socket-module",
+              "cache-manager"
+            ]
           },
           "configurations": {
             "production": {
@@ -111,7 +118,7 @@
                 }
               ],
               "sourceMap": false,
-              "optimization": true
+              "optimization": false
             }
           }
         },
