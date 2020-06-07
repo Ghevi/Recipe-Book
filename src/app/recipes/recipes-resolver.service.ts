@@ -8,7 +8,6 @@ import { Store } from "@ngrx/store";
 import { Actions, ofType } from "@ngrx/effects";
 
 import { Recipe } from "./recipe.model";
-import { RecipeService } from "./recipe.service";
 import * as fromApp from "../store/app.reducer";
 import * as RecipesActions from "../recipes/store/recipe.actions";
 import { take, map, switchMap } from "rxjs/operators";
